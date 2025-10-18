@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,7 +26,7 @@ public class AuthorizationPage {
         PageFactory.initElements(driver, this);
     }
 
-
+    @Step("Авторизация пользователя с email, password")
     public void login(String email, String password) {
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);

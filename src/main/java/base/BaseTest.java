@@ -1,7 +1,7 @@
-package Base;
+package base;
 
-import API.User;
-import API.UserSteps;
+import api.User;
+import api.UserSteps;
 import com.github.javafaker.Faker;
 import config.BrowserSettings;
 import org.junit.After;
@@ -25,29 +25,30 @@ public abstract class BaseTest {
 
     @Before
     public void setUp() {
+        // Получаем тип браузера из аргументов командной строки или переменной окружения
+        String browserType = System.getProperty("browser", "chrome");
 
-        driver = BrowserSettings.createChromeDriver();
+        // Используем фабрику для создания драйвера
+        driver = BrowserSettings.getDriver(browserType);
+
         driver.manage().window().maximize();
-        driver.get(BrowserSettings.APP_URL);
-
+        driver.get("https://stellarburgers.education-services.ru");
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
 
         authorizationPage = new AuthorizationPage(driver);
         registrationPage = new RegistrationPage(driver);
         forgottenPasswordPage = new ForgottenPasswordPage(driver);
         faker = new Faker();
         userSteps = new UserSteps();
+
     }
 
     @After
     public void tearDown() {
-
         if (currentUser != null && currentUser.getAccessToken() != null) {
             userSteps.deleteUser();
         }
-
 
         if (driver != null) {
             driver.quit();

@@ -2,10 +2,15 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class RegistrationPage {
 
@@ -100,5 +105,14 @@ public class RegistrationPage {
     @Step("Кликаем по ссылке 'Войти' на странице регистрации")
     public void clickLoginFromRegistration() {
         loginLink.click();
+    }
+    @Step("Ожидание перехода на страницу авторизации")
+    public void waitForRedirectToLoginPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        try {
+            wait.until(ExpectedConditions.urlContains("login")); // Ждем, пока URL изменится на /login
+        } catch (TimeoutException ex) {
+            throw new AssertionError("Переход на страницу авторизации не произошел", ex);
+        }
     }
 }

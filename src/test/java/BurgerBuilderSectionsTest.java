@@ -1,4 +1,6 @@
-import Base.BaseTest;
+import base.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import pages.BurgerBuilderSectionsPage;
@@ -6,6 +8,8 @@ import pages.BurgerBuilderSectionsPage;
 public class BurgerBuilderSectionsTest extends BaseTest {
 
     @Test
+    @DisplayName("Навигация к секции 'Булки'")
+    @Description("Проверка активации секции 'Булки' после перехода")
     public void testNavigateToBunsSection()  {
 
 
@@ -24,6 +28,8 @@ public class BurgerBuilderSectionsTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Навигация к секции 'Соусы'")
+    @Description("Проверка активации секции 'Соусы' после перехода")
     public void testNavigateToSaucesSection() {
 
 
@@ -41,6 +47,8 @@ public class BurgerBuilderSectionsTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Навигация к секции 'Начинки'")
+    @Description("Проверка активации секции 'Начинки' после перехода")
     public void testNavigateToFillingsSection() {
 
 

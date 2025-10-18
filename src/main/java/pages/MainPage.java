@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,13 +23,17 @@ public class MainPage {
         PageFactory.initElements(driver, this);
     }
 
-
+    @Step("Нажатие на кнопку 'Войти в аккаунт'")
     public void clickEnterAccountButton() {
         enterAccountButton.click();
     }
 
-
+    @Step("Открытие личного кабинета")
     public void openPersonalCabinet() {
         personalCabinetButton.click();
+    }
+
+    public boolean isUserLoggedIn() {
+        return driver.getCurrentUrl().startsWith("https://stellarburgers.education-services.ru/");
     }
 }
