@@ -110,7 +110,7 @@ public class RegistrationPage {
     public void waitForRedirectToLoginPage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
-            wait.until(ExpectedConditions.urlContains("login")); // Ждем, пока URL изменится на /login
+            wait.until(ExpectedConditions.urlContains("login"));
         } catch (TimeoutException ex) {
             throw new AssertionError("Переход на страницу авторизации не произошел", ex);
         }

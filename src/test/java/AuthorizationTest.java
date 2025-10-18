@@ -38,9 +38,9 @@ public class AuthorizationTest extends BaseTest {
     @Description("Проверка успешного входа через ссылку 'Личный кабинет'")
     public void testLoginUsingPersonalCabinetButton() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.openPersonalCabinet(); // Открываем личный кабинет
-        authorizationPage.login(testUser.getEmail(), testUser.getPassword()); // Авторизуемся через UI
-        assertTrue("Пользователь не вошёл в систему!", mainPage.isUserLoggedIn()); // Проверяем залогиненность через UI
+        mainPage.openPersonalCabinet();
+        authorizationPage.login(testUser.getEmail(), testUser.getPassword());
+        assertTrue("Пользователь не вошёл в систему!", mainPage.isUserLoggedIn());
     }
 
     @Test
@@ -48,11 +48,11 @@ public class AuthorizationTest extends BaseTest {
     @Description("Проверка успешного входа через форму регистрации")
     public void testLoginViaRegistrationFormSubmitButton() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.openPersonalCabinet(); // Открываем личный кабинет
-        registrationPage.navigateToRegisterPage(); // Переходим на страницу регистрации
-        registrationPage.clickLoginFromRegistration(); // Кликаем на ссылку "Войти" на странице регистрации
-        authorizationPage.login(testUser.getEmail(), testUser.getPassword()); // Авторизуемся через UI
-        assertTrue("Пользователь не вошёл в систему!", mainPage.isUserLoggedIn()); // Проверяем залогиненность через UI
+        mainPage.openPersonalCabinet();
+        registrationPage.navigateToRegisterPage();
+        registrationPage.clickLoginFromRegistration();
+        authorizationPage.login(testUser.getEmail(), testUser.getPassword());
+        assertTrue("Пользователь не вошёл в систему!", mainPage.isUserLoggedIn());
     }
 
     @Test
@@ -60,10 +60,10 @@ public class AuthorizationTest extends BaseTest {
     @Description("Проверка успешного входа через форму восстановления пароля")
     public void testLoginUsingForgottenPasswordFormSubmitButton() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.openPersonalCabinet(); // Открываем личный кабинет
-        forgottenPasswordPage.navigateToForgottenPasswordPage(); // Переходим на страницу восстановления пароля
-        forgottenPasswordPage.clickLoginFromForgottenPassword(); // Кликаем на ссылку "Войти" на странице восстановления пароля
-        authorizationPage.login(testUser.getEmail(), testUser.getPassword()); // Авторизуемся через UI
-        assertTrue("Пользователь не вошёл в систему!", mainPage.isUserLoggedIn()); // Проверяем залогиненность через UI
+        mainPage.openPersonalCabinet();
+        forgottenPasswordPage.navigateToForgottenPasswordPage();
+        forgottenPasswordPage.clickLoginFromForgottenPassword();
+        authorizationPage.login(testUser.getEmail(), testUser.getPassword());
+        assertTrue("Пользователь не вошёл в систему!", mainPage.isUserLoggedIn());
     }
 }
